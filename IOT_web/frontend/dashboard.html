@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <title>Dashboard</title>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="wrap-all">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside id="sidebar">
+
+            <header class="header-sidebar">
+                <span class="logo-mark">◉</span>
+                <span>Sensor monitor</span>
+            </header>
+
+            <nav class="nav-content">
+                <button class="nav-btn active">▦ Dashboard</button>
+                <button class="nav-btn">▥ Data Sensor</button>
+                <button class="nav-btn">↻ Action History</button>
+                <button class="nav-btn">▯ Profile</button>
+            </nav>
+
+            <footer class="footer-sidebar">
+                <div class="user-small">
+                    <div class="avatar">A</div>
+
+                    <div class="user">
+                        <b>hoanganh</b>
+                        <span>user</span>
+                    </div>
+                </div>
+
+                <button class="logout-btn">
+                    ⇥ Đăng xuất
+                </button>
+            </footer>
+
+        </aside>
+
+
+        <!-- ================= CONTENT ================= -->
+        <div class="content">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Dữ liệu cảm biến và trạng thái thiết bị theo thời gian thực</p>
+                </div>
+
+                <div class="system-online">
+                    <span class="status-dot"></span>
+                    <span id="systemConnectionText"></span>
+                </div>
+
+            </header>
+
+
+            <!-- ================= MAIN ================= -->
+            <main class="dashboard-main">
+
+                <!-- SENSOR SUMMARY -->
+                <section class="sensor-summary">
+
+                    <!-- Temperature -->
+                    <article class="sensor-card temperature-card">
+
+                        <div class="sensor-card-header">
+                            <span>Nhiệt độ</span>
+                            <div class="sensor-icon temperature-icon">♨</div>
+                        </div>
+
+                        <div class="sensor-value">
+                            <strong id="temperatureValue"></strong>
+                            <span>°C</span>
+                        </div>
+
+                        <div class="progress">
+                            <div
+                                class="progress-bar temperature-progress"
+                                id="temperatureBar">
+                            </div>
+                        </div>
+
+                        <div class="sensor-footer">
+                            <span>Mức hiện tại</span>
+                            <span id="temperatureTime"></span>
+                        </div>
+
+                    </article>
+
+
+                    <!-- Humidity -->
+                    <article class="sensor-card humidity-card">
+
+                        <div class="sensor-card-header">
+                            <span>Độ ẩm</span>
+                            <div class="sensor-icon humidity-icon">▥</div>
+                        </div>
+
+                        <div class="sensor-value">
+                            <strong id="humidityValue"></strong>
+                            <span>%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div
+                                class="progress-bar humidity-progress"
+                                id="humidityBar">
+                            </div>
+                        </div>
+
+                        <div class="sensor-footer">
+                            <span>Mức hiện tại</span>
+                            <span id="humidityTime"></span>
+                        </div>
+
+                    </article>
+
+
+                    <!-- Light -->
+                    <article class="sensor-card light-card">
+
+                        <div class="sensor-card-header">
+                            <span>Ánh sáng</span>
+                            <div class="sensor-icon light-icon">☀</div>
+                        </div>
+
+                        <div class="sensor-value">
+                            <strong id="lightValue"></strong>
+                            <span>%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div
+                                class="progress-bar light-progress"
+                                id="lightBar">
+                            </div>
+                        </div>
+
+                        <div class="sensor-footer">
+                            <span>Mức hiện tại</span>
+                            <span id="lightTime"></span>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- CHART + NODE IOT -->
+                <section class="overview-grid">
+
+                    <!-- SENSOR CHART -->
+                    <article class="panel sensor-chart-card">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Biểu đồ cảm biến</h2>
+                                <p>2 giây gần nhất</p>
+                            </div>
+
+                            <select id="sensorFilter">
+                                <option value="all">Tất cả cảm biến</option>
+                                <option value="temperature">Nhiệt độ</option>
+                                <option value="humidity">Độ ẩm</option>
+                                <option value="light">Ánh sáng</option>
+                            </select>
+
+                        </div>
+
+                        <div class="chart-legend">
+
+                            <span>
+                                <i class="legend-dot temp-dot"></i>
+                                Nhiệt độ
+                            </span>
+
+                            <span>
+                                <i class="legend-dot humidity-dot"></i>
+                                Độ ẩm
+                            </span>
+
+                            <span>
+                                <i class="legend-dot light-dot"></i>
+                                Ánh sáng
+                            </span>
+
+                        </div>
+
+                        <div class="chart-container">
+
+                            <div class="chart-grid"></div>
+
+                            <canvas id="sensorChart"></canvas>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- NODE IOT -->
+                    <article class="panel node-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h2>Node IoT</h2>
+                                <p>Trạng thái phần cứng</p>
+                            </div>
+                        </div>
+
+
+                        <div class="node-list">
+
+                            <div class="node-item">
+                                <div>
+                                    <b id="nodeName">--</b>
+                                    <p>
+                                        Lần cuối hoạt động:
+                                        <span id="lastSeen">--</span>
+                                    </p>
+                                </div>
+
+                                <span id="nodeStatus" class="badge badge-offline"></span>
+                            </div>
+
+                            <div class="node-item">
+                                <div>
+                                    <b>Cảm biến hoạt động</b>
+                                </div>
+
+                                <strong id="sensorCount"></strong>
+                            </div>
+
+                            <div class="node-item">
+                                <div>
+                                    <b>Thiết bị điều khiển</b>
+                                </div>
+
+                                <strong id="deviceCount"></strong>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- DEVICE CONTROL -->
+                <section class="panel device-section">
+
+                    <div class="device-section-header">
+                        <h2>Điều khiển thiết bị</h2>
+                    </div>
+
+                    <!-- DEVICE -->
+                    <div class="device-grid" id="deviceGrid"></div>
+
+                </section>
+
+
+                <!-- SYSTEM STATUS -->
+                <section class="system-status panel">
+
+                    <div>
+                        <strong id="systemStatusText"></strong>
+                        <p id="systemStatusDescription"></p>
+                    </div>
+
+                    <span>
+                        Cập nhật lúc
+                        <span id="systemUpdatedAt"></span>
+                    </span>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/auth.js"></script>
+<script src="./js/dashboard.js"></script>
+</html>

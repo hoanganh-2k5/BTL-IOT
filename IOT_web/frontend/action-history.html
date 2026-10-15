@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/table.css">
+
+    <title>Action History</title>
+</head>
+
+<body class="table-view">
+
+    <div class="wrap-all">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside id="sidebar">
+
+            <header class="header-sidebar">
+                <span class="logo-mark">◉</span>
+                <span>Sensor monitor</span>
+            </header>
+
+            <nav class="nav-content">
+                <button class="nav-btn">▦ Dashboard</button>
+                <button class="nav-btn">▥ Data Sensor</button>
+                <button class="nav-btn active">↻ Action History</button>
+                <button class="nav-btn">▯ Profile</button>
+            </nav>
+
+            <footer class="footer-sidebar">
+                <div class="user-small">
+                    <div class="avatar">A</div>
+
+                    <div class="user">
+                        <b>hoanganh</b>
+                        <span>user</span>
+                    </div>
+                </div>
+
+                <button class="logout-btn">
+                    ⇥ Đăng xuất
+                </button>
+            </footer>
+
+        </aside>
+
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Action History</h1>
+                    <p>Theo dõi lệnh điều khiển và kết quả phản hồi</p>
+                </div>
+
+                <div class="system-online">
+                    <span class="status-dot"></span>
+                    <span>0/1 ESP8266 Online</span>
+                </div>
+
+            </header>
+
+
+            <!-- MAIN -->
+            <main class="table-page">
+
+                <!-- FILTER -->
+                <section class="filter-panel action-filter">
+
+                    <div class="filter-item">
+                        <label for="deviceFilter">Thiết bị</label>
+                        <select id="deviceFilter">
+                            <option value="">Tất cả thiết bị</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="actionFilter">Action</label>
+                        <select id="actionFilter">
+                            <option value="">Tất cả Action</option>
+                            <option value="ON">ON</option>
+                            <option value="OFF">OFF</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter">
+                            <option value="">Tất cả Status</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                            <option value="FAILED">FAILED</option>
+                            <option value="TIMEOUT">TIMEOUT</option>
+                            <option value="PENDING">PENDING</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="actionSearch">Tìm kiếm thời gian</label>
+                        <input id="actionSearch" type="search" placeholder="Nhập thời gian">
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button type="button" class="search-btn">Tìm</button>
+                        <button type="button" class="reset-btn">Đặt lại</button>
+                    </div>
+                </section>
+
+                <section class="nothing hidden">
+                    <img src="asset/image/icons8-nothing-found-100.png" alt="not found" style="display: block; width: 100%;">
+                    <label for="">Chưa có dữ liệu hành động</label>
+                </section>
+
+                <!-- TABLE -->
+                <section class="data-table-card hidden">
+
+                    <header class="table-header">
+
+                        <h2>
+                            Lịch sử thao tác
+                        </h2>
+
+                        <span>
+                            Phản hồi mới nhất:
+                            <span id="lastResponse">
+                                185 ms
+                            </span>
+                        </span>
+
+                    </header>
+
+
+                    <div class="table-content">
+
+                        <table class="data-table action-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Device ID</th>
+                                    <th>Tên thiết bị</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Thời gian gửi</th>
+                                    <th>Phản hồi</th>
+                                    <th>Độ trễ</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- TABLE FOOTER -->
+                    <footer class="table-footer">
+                        <label class="record-limit" for="actionPageSize">
+                            Hiển thị:
+                            <select id="actionPageSize" aria-label="Số bản ghi mỗi trang">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                            bản ghi/trang
+                        </label>
+                        <nav class="pagination" id="pagination"></nav>
+
+                    </footer>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="./js/api.js"></script>
+<script src="./js/auth.js"></script>
+<script src="./js/action-history.js"></script>
+</html>

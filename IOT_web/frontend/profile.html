@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap-all">
+        <!-- ================= SIDEBAR ================= -->
+        <aside id="sidebar">
+
+            <header class="header-sidebar">
+                <span class="logo-mark">◉</span>
+                <span>Sensor monitor</span>
+            </header>
+
+            <nav class="nav-content">
+                <button class="nav-btn">▦ Dashboard</button>
+                <button class="nav-btn">▥ Data Sensor</button>
+                <button class="nav-btn">↻ Action History</button>
+                <button class="nav-btn active">▯ Profile</button>
+            </nav>
+
+            <footer class="footer-sidebar">
+                <div class="user-small">
+                    <div class="avatar">A</div>
+
+                    <div class="user">
+                        <b>hoanganh</b>
+                        <span>user</span>
+                    </div>
+                </div>
+
+                <button class="logout-btn">
+                    ⇥ Đăng xuất
+                </button>
+            </footer>
+        </aside>
+        <div class="content">
+            <!-- ================= TOPBAR ================= -->
+            <header class="topbar">
+                <div>
+                    <h1>Profile</h1>
+                    <p>thông tin cá nhân và src đề tài</p>
+                </div>
+                <div class="system-online">
+                    <span class="status-dot"></span>
+                    <span>0/1 ESP8266 Online</span>
+                </div>
+            </header>
+            <div class="profile-wrap">
+                <!-- ================= PROFILE CONTENT ================= -->
+                <div class="profile-content">
+                    <div class="profile-avatar">A</div>
+                    <h2 class="profile-name">Nguyễn Hoàng Anh</h2>
+                    <p class="profile-role">sinh viên an toàn thông tin</p>
+                    <div class="profile-info">
+                        <div class="profile-list">
+                            <span class="color-grey">Họ và tên</span>
+                            <strong>Nguyễn Hoàng Anh</strong>
+                        </div>
+                        <div class="profile-list">
+                            <span class="color-grey">Ngày sinh</span>
+                            <strong>31/08/2005</strong>
+                        </div>
+                        <div class="profile-list">
+                            <span class="color-grey">Mã sinh viên</span>
+                            <strong>B23DCAT012</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================= PROFILE PROJECT ================= -->
+                <div class="profile-prj">
+                    <h2 class="profile-prj-title">Tài liệu dự án</h2>
+                    <div class="profile-prj-content">
+                        <div class="profile-prj-list">
+                            <div class="color-primary">⌘</div>
+                            <div class="profile-prj-tag">
+                                <strong>Github</strong>
+                                <span class="profile-prj-tag-cmt">Source code của dự án</span>
+                            </div>
+                            <a href="#" style="text-decoration: none;" class="color-primary">Mở</a>
+                        </div>
+                        <div class="profile-prj-list">
+                            <div class="color-primary">◇</div>
+                            <div class="profile-prj-tag">
+                                <strong>Figma</strong>
+                                <span class="profile-prj-tag-cmt">Thiết kế giao diện</span>
+                            </div>
+                            <a href="#" style="text-decoration: none;" class="color-primary">Mở</a>
+                        </div>
+                        <div class="profile-prj-list">
+                            <div class="color-primary">{ }</div>
+                            <div class="profile-prj-tag">
+                                <strong>Postman</strong>
+                                <span class="profile-prj-tag-cmt">Tài liệu REST API</span>
+                            </div>
+                            <a href="#" style="text-decoration: none;" class="color-primary">Mở</a>
+                        </div>
+                        <div class="profile-prj-list">
+                            <div class="color-primary">▤</div>
+                            <div class="profile-prj-tag">
+                                <strong>Báo cáo PDF</strong>
+                                <span class="profile-prj-tag-cmt">Tài liệu SRS và báo cáo</span>
+                            </div>
+                            <a href="#" style="text-decoration: none;" class="color-primary">Mở</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/api.js"></script>
+<script src="./js/auth.js"></script>
+<script src="./js/profile.js"></script>
+</html>

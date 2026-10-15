@@ -1,0 +1,813 @@
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.wrap-all {
+    display: block;
+    min-height: 100vh;
+    background: var(--color-background);
+}
+
+#sidebar {
+    position: fixed;
+    width: 236px;
+    height: 100vh;
+    padding: 24px 16px;
+
+    background-color: var(--color-sidebar);
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+
+/* =========================
+   HEADER SIDEBAR
+========================= */
+
+.header-sidebar {
+    color: var(--color-white);
+    font-size: 19px;
+    text-transform: uppercase;
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 8px 32px;
+}
+
+.logo-mark {
+    display: grid;
+    place-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+    background-color: var(--color-primary);
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+.nav-content {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+}
+
+.nav-btn {
+    height: 44px;
+    font-size: 17px;
+    padding: 0 10px;
+
+    color: var(--color-text-sidebar);
+    background-color: transparent;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-btn:hover {
+    color: var(--color-white);
+    background-color: var(--color-sidebar-hover);
+}
+
+.nav-btn.active {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}
+
+
+/* =========================
+   FOOTER SIDEBAR
+========================= */
+
+.footer-sidebar {
+    padding-top: 20px;
+    border-top: 1px solid var(--color-sidebar-border);
+}
+
+.user-small {
+    padding: 0 10px 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-content: center;
+
+    border-radius: 50%;
+
+    color: var(--color-white);
+    background-color: var(--color-avatar);
+
+    font-weight: 800;
+}
+
+.user {
+    display: grid;
+
+    color: var(--color-text-sidebar);
+    font-size: 13px;
+}
+
+.user b {
+    color: var(--color-white);
+    font-size: 17px;
+}
+
+.logout-btn {
+    width: 100%;
+    height: 44px;
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 12px;
+
+    color: var(--color-text-sidebar);
+    background: transparent;
+
+    cursor: pointer;
+
+    text-align: left;
+    font-size: 17px;
+}
+
+.logout-btn:hover {
+    background-color: var(--color-sidebar-hover);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    margin-left: 236px;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    height: 76px;
+    padding: 0 26px;
+
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+.topbar p {
+    margin: 4px 0 0;
+
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.system-online {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: var(--color-success-bg);
+    color: var(--color-success-text);
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: var(--color-success);
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.dashboard-main {
+    padding: 20px 26px;
+
+    display: grid;
+    gap: 16px;
+}
+
+
+/* =========================
+   SENSOR CARDS
+========================= */
+
+.sensor-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.sensor-card,
+.panel {
+    background: var(--color-white);
+
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+}
+
+.sensor-card {
+    padding: 18px;
+}
+
+.sensor-card-header {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sensor-icon {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-content: center;
+
+    border-radius: 10px;
+}
+
+.temperature-icon {
+    color: var(--color-temperature);
+    background: var(--color-temperature-bg);
+}
+
+.humidity-icon {
+    color: var(--color-humidity);
+    background: var(--color-humidity-bg);
+}
+
+.light-icon {
+    color: var(--color-light);
+    background: var(--color-light-bg);
+}
+
+.sensor-value {
+    margin-top: 12px;
+
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.sensor-value strong {
+    font-size: 29px;
+}
+
+.sensor-value span {
+    color: var(--color-text-muted);
+    font-size: 29px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress {
+    height: 6px;
+    margin-top: 12px;
+
+    border-radius: 10px;
+
+    background: var(--color-progress-bg);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.temperature-progress {
+    background: var(--color-temperature);
+}
+
+.humidity-progress {
+    background: var(--color-humidity);
+}
+
+.light-progress {
+    background: var(--color-light);
+}
+
+.sensor-footer {
+    margin-top: 8px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+
+/* =========================
+   CHART + NODE
+========================= */
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+}
+
+.sensor-chart-card,
+.node-panel,
+.device-section {
+    padding: 18px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.panel h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.panel p {
+    color: var(--color-text-muted);
+}
+
+.panel-header p {
+    margin: 3px 0 0;
+    font-size: 12px;
+}
+
+select {
+    padding: 7px 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+
+    background: var(--color-white);
+    outline: none;
+}
+
+
+/* =========================
+   CHART
+========================= */
+
+.chart-legend {
+    margin-top: 12px;
+
+    display: flex;
+    gap: 14px;
+
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.chart-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-dot {
+    width: 7px;
+    height: 7px;
+    
+    border-radius: 50%;
+}
+
+.temp-dot {
+    background: var(--color-temperature);
+}
+
+.humidity-dot {
+    background: var(--color-humidity);
+}
+
+.light-dot {
+    background: var(--color-light);
+}
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+    height: 230px;
+
+    margin-top: 12px;
+
+    border-top: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+#sensorChart {
+    width: 100%;
+    height: 100%;
+}
+
+.chart-time {
+    padding-top: 8px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+
+/* =========================
+   NODE IOT
+========================= */
+
+.node-list {
+    margin-top: 14px;
+
+    display: grid;
+    gap: 8px;
+}
+
+.node-item {
+    padding: 12px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+
+    background: var(--color-node-bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.node-item b {
+    font-size: 15px;
+}
+
+.node-item p {
+    margin: 4px 0 0;
+    font-size: 13px;
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+    padding: 4px 7px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.badge-online {
+    color: var(--color-success-text);
+    background: var(--color-success-bg);
+}
+
+.badge-offline {
+    color: var(--color-danger-text);
+    background: var(--color-danger-bg);
+}
+
+
+/* =========================
+   DEVICE CONTROL
+========================= */
+
+.device-section-header {
+    margin-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.device-section-header h2 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.device-card {
+    padding: 14px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+}
+
+.device-card-top,
+.device-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.device-card-top {
+    align-items: flex-start;
+}
+
+.device-card h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.device-card p {
+    margin: 4px 0 0;
+
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.device-bottom {
+    margin-top: 18px;
+    align-items: center;
+}
+
+.device-bottom > div {
+    display: grid;
+    gap: 2px;
+}
+
+.device-bottom span {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.device-bottom strong {
+    font-size: 13px;
+}
+
+.device-bottom strong.pending-state {
+    color: #f59e0b;
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+    position: relative;
+
+    width: 38px;
+    height: 22px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 20px;
+
+    background: var(--color-switch-off);
+}
+
+.switch span {
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+    background: var(--color-white);
+}
+
+.switch.active-switch {
+    background: var(--color-success);
+}
+
+.switch.active-switch span {
+    left: 19px;
+}
+
+
+/* =========================
+   SYSTEM STATUS
+========================= */
+
+.system-status {
+    padding: 13px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.system-status strong {
+    font-size: 13px;
+}
+
+.system-status p {
+    margin: 3px 0 0;
+
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.system-status > span {
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.command-status {
+    display: block;
+    min-height: 14px;
+    margin-top: 2px;
+
+    font-size: 11px;
+}
+
+/* transition ON OFF */
+
+.command-status.pending {
+    color: var(--color-text-muted);
+}
+
+.command-status.success {
+    color: var(--color-success-text);
+}
+
+.command-status.failed {
+    color: var(--color-danger-text);
+}
+
+.switch {
+    cursor: pointer;
+}
+
+.switch,
+.switch span {
+    transition: 0.2s;
+}
+
+.switch:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/* Dashboard: fit the complete layout inside one viewport */
+.dashboard-page {
+    overflow: hidden;
+}
+
+.dashboard-page .wrap-all,
+.dashboard-page .content {
+    height: 100vh;
+    min-height: 0;
+}
+
+.dashboard-page .content {
+    display: grid;
+    grid-template-rows: 64px minmax(0, 1fr);
+}
+
+.dashboard-page .topbar {
+    height: 64px;
+    padding: 0 20px;
+}
+
+.dashboard-page .dashboard-main {
+    min-height: 0;
+    padding: 12px 20px;
+    gap: 10px;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+}
+
+.dashboard-page .sensor-summary,
+.dashboard-page .overview-grid {
+    gap: 10px;
+}
+
+.dashboard-page .sensor-card {
+    padding: 12px 14px;
+}
+
+.dashboard-page .sensor-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.dashboard-page .sensor-value {
+    margin-top: 6px;
+}
+
+.dashboard-page .progress {
+    margin-top: 6px;
+}
+
+.dashboard-page .sensor-footer {
+    margin-top: 5px;
+}
+
+.dashboard-page .overview-grid,
+.dashboard-page .sensor-chart-card,
+.dashboard-page .node-panel {
+    min-height: 0;
+}
+
+.dashboard-page .sensor-chart-card {
+    padding: 12px 14px;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
+.dashboard-page .node-panel {
+    padding: 12px 14px;
+}
+
+.dashboard-page .chart-legend {
+    margin-top: 6px;
+}
+
+.dashboard-page .chart-container {
+    height: auto;
+    min-height: 150px;
+    margin-top: 6px;
+}
+
+.dashboard-page .chart-time {
+    padding-top: 4px;
+}
+
+.dashboard-page .node-list {
+    margin-top: 8px;
+    gap: 6px;
+}
+
+.dashboard-page .node-item {
+    padding: 8px 10px;
+}
+
+.dashboard-page .device-section {
+    padding: 10px 14px;
+}
+
+.dashboard-page .device-section-header {
+    margin-bottom: 7px;
+}
+
+.dashboard-page .device-card {
+    padding: 9px 12px;
+}
+
+.dashboard-page .device-bottom {
+    margin-top: 8px;
+}
+
+.dashboard-page .system-status {
+    padding: 8px 14px;
+}

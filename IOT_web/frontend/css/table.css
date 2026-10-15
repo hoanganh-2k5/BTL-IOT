@@ -1,0 +1,484 @@
+/* =========================
+   TABLE PAGE
+========================= */
+
+.table-page {
+    padding: 26px;
+
+    display: grid;
+    gap: 20px;
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-panel {
+    padding: 20px;
+
+    background-color: var(--color-white);
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+
+    display: grid;
+    grid-template-columns:
+        2fr
+        5fr
+        1fr;
+
+    gap: 12px;
+    align-items: end;
+}
+
+.filter-item {
+    display: grid;
+    gap: 8px;
+}
+
+.filter-item label {
+    color: var(--color-text-muted);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.filter-item input,
+.filter-item select {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #aaaaaa;
+    border-radius: 9px;
+
+    background-color: var(--color-white);
+    color: var(--color-text-main);
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.search-btn,
+.reset-btn {
+    height: 42px;
+
+    padding: 0 16px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.search-btn {
+    border: none;
+
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.search-btn:hover {
+    background-color: var(--color-submit-btn-hover);
+}
+
+.reset-btn {
+    border: 1px solid var(--color-input-border);
+
+    background-color: var(--color-white);
+    color: var(--color-text-main);
+}
+
+.reset-btn:hover {
+    background-color: var(--color-node-bg);
+}
+
+
+/* =========================
+   TABLE CARD
+========================= */
+
+.data-table-card {
+    overflow: hidden;
+
+    background-color: var(--color-white);
+
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+}
+
+.table-header {
+    height: 58px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table-header h2 {
+    margin: 0;
+
+    color: var(--color-text-main);
+
+    font-size: 17px;
+}
+
+.table-header > span {
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-content {
+    width: 100%;
+}
+
+.data-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    color: var(--color-table-text);
+
+    font-size: 15px;
+}
+
+.data-table thead {
+    background-color: var(--color-node-bg);
+}
+
+.data-table th {
+    padding: 13px 14px;
+
+    color: var(--color-table-heading);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-align: left;
+}
+
+.data-table td {
+    height: 48px;
+    padding: 0 14px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--color-node-bg);
+}
+
+.value-cell {
+    color: var(--color-sidebar-border);
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   TABLE FOOTER
+========================= */
+
+.table-footer {
+    min-height: 64px;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.record-limit {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--color-table-text);
+
+    font-size: 15px;
+}
+
+.record-limit select {
+    height: 30px;
+
+    padding: 0 7px;
+
+    border: 1px solid var(--color-switch-off);
+
+    background-color: var(--color-white);
+}
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+    display: flex;
+    gap: 7px;
+}
+
+.pagination button {
+    min-width: 34px;
+    height: 34px;
+
+    padding: 0 10px;
+
+    border: 1px solid var(--color-input-border);
+    border-radius: 8px;
+
+    background-color: var(--color-white);
+    color: var(--color-text-main);
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.pagination button:hover {
+    background-color: var(--color-pagination-hover);
+}
+
+.pagination .page-active {
+    border-color: var(--color-primary);
+
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination .page-active:hover {
+    background-color: var(--color-submit-btn-hover);
+}
+
+
+/* =========================
+   ACTION HISTORY FILTER
+========================= */
+
+.action-filter {
+    grid-template-columns: repeat(3, minmax(140px, 1fr)) minmax(220px, 2fr) auto;
+}
+
+.sensor-search-panel {
+    width: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.sensor-search-group {
+    flex: 0 0 auto;
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: end;
+}
+
+.sensor-search-group .filter-item:first-child {
+    flex: 0 0 450px;
+}
+
+.sensor-search-group .filter-item:nth-child(2) {
+    flex: 0 0 170px;
+}
+
+.sensor-search-group .filter-buttons {
+    justify-content: flex-end;
+}
+
+
+/* =========================
+   ACTION HISTORY TABLE
+========================= */
+
+.action-cell {
+    font-weight: 700;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.status-success {
+    color: var(--color-success-text);
+    background-color: var(--color-success-bg);
+}
+
+.status-failed {
+    color: var(--color-danger-text);
+    background-color: var(--color-danger-bg);
+}
+
+.status-timeout {
+    color: var(--color-timeout-text);
+    background-color: var(--color-timeout);
+}
+
+.status-pending {
+    color: var(--color-light);
+    background-color: var(--color-light-bg);
+}
+
+/* NOTHING */
+
+.nothing{
+    background-color: var(--color-white);
+    display: grid;
+    min-height: 80vh;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Keep table pages inside one viewport */
+.table-view {
+    overflow: hidden;
+}
+
+.table-view .wrap-all,
+.table-view .content {
+    height: 100vh;
+    min-height: 0;
+}
+
+.table-view .content {
+    display: grid;
+    grid-template-rows: 64px minmax(0, 1fr);
+}
+
+.table-view .topbar {
+    height: 64px;
+    padding: 0 20px;
+}
+
+.table-view .table-page {
+    min-height: 0;
+    padding: 12px 20px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-view .filter-panel {
+    order: 1;
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    gap: 10px;
+}
+
+.table-view .filter-item {
+    gap: 5px;
+}
+
+.table-view .filter-item input,
+.table-view .filter-item select,
+.table-view .search-btn,
+.table-view .reset-btn {
+    height: 36px;
+}
+
+.table-view .data-table-card {
+    order: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: 46px minmax(0, 1fr) 48px;
+}
+
+.table-view .table-header {
+    height: 46px;
+    padding: 0 14px;
+}
+
+.table-view .table-content {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.table-view .data-table th {
+    padding: 9px 12px;
+}
+
+.table-view .data-table td {
+    height: 45px;
+    padding: 0 12px;
+}
+
+.table-view .table-footer {
+    min-height: 48px;
+    padding: 0 14px;
+}
+
+.table-view .pagination button {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+}
+
+.table-view .status-badge {
+    padding: 4px 8px;
+}
+
+.table-view .nothing {
+    order: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+@media (max-width: 1100px) {
+    .action-filter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .action-filter .filter-buttons {
+        justify-content: flex-end;
+    }
+
+    .sensor-search-panel {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .sensor-search-group {
+        width: 100%;
+        margin-left: 0;
+        flex-wrap: wrap;
+    }
+
+    .sensor-search-group .filter-item:first-child,
+    .sensor-search-group .filter-item:nth-child(2) {
+        flex: 1 1 180px;
+    }
+}

@@ -1,0 +1,49 @@
+.wrap-all{
+    display: grid;
+    place-items: center;
+    padding: 25px;
+    min-height: 100vh;
+    background: #f5f6f7;
+}
+
+.login-form{
+    width: 500px;
+    padding: 30px;
+    display: grid;
+    place-items: center;
+    background-color: #fff;
+    box-shadow: 0 24px 70px rgba(15,23,42,.12);
+    border-radius: 5px;
+}
+
+.form-group{
+    margin: 0 0 16px 0;
+    display: grid;
+}
+
+.input-form{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.submit-btn{
+    background-color: var(--color-primary);
+    width: 90%;
+    height: 40px;
+    color: #fffefe;
+    font-size: 17px;
+}
+
+.submit-btn:hover{
+    background-color: var(--color-submit-btn-hover);
+    cursor: pointer;
+}
+
+.active-false{
+    border-color: var(--color-danger-text);
+}
+
+.false-status{
+    margin-top: 10px;
+    color: var(--color-danger-text);
+}

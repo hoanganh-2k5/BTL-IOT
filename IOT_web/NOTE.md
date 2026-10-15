@@ -1,0 +1,54 @@
+tạo bảng:
+```sql
+CREATE TABLE users (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    fullname VARCHAR(50),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE devices (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    device_code VARCHAR(255) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    current_state VARCHAR(50),
+    connection_status VARCHAR(50) NOT NULL DEFAULT 'offline',
+    last_seen TIMESTAMPTZ
+);
+
+CREATE TABLE sensors (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sensor_code VARCHAR(255) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    unit VARCHAR(50),
+    devices_id BIGINT NOT NULL REFERENCES devices(id)
+);
+
+CREATE TABLE sensor_data (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    value DOUBLE PRECISION NOT NULL,
+    recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    sensor_id BIGINT NOT NULL REFERENCES sensors(id)
+);
+
+CREATE TABLE actions (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    request_id VARCHAR(255) NOT NULL UNIQUE,
+    action VARCHAR(255) NOT NULL,
+    requested_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    responded_at TIMESTAMPTZ,
+    response_time_ms INTEGER,
+    message VARCHAR(255),
+    user_id BIGINT NOT NULL REFERENCES users(id),
+    devices_id BIGINT NOT NULL REFERENCES devices(id)
+);
+```
+
+reset data:
+
+```sql
+TRUNCATE TABLE sensor_data, sensors, devices RESTART IDENTITY CASCADE;
+```
