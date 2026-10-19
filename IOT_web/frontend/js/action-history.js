@@ -66,6 +66,7 @@ function renderActions(items) {
         const status = String(item.status || "PENDING").toLowerCase();
 
         appendCell(row, `#${String(item.id).padStart(4, "0")}`);
+        appendCell(row, item.username || "--");
         appendCell(row, item.deviceId || "--");
         appendCell(row, item.deviceName || item.deviceId || "--");
         appendCell(row, item.action || "--", "action-cell");

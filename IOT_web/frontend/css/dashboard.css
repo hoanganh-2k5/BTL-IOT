@@ -724,7 +724,7 @@ select {
     min-height: 0;
     padding: 12px 20px;
     gap: 10px;
-    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    grid-template-rows: auto minmax(0, 1fr) 150px auto;
 }
 
 .dashboard-page .sensor-summary,
@@ -793,7 +793,11 @@ select {
 }
 
 .dashboard-page .device-section {
+    min-height: 0;
     padding: 10px 14px;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
 }
 
 .dashboard-page .device-section-header {
@@ -802,6 +806,60 @@ select {
 
 .dashboard-page .device-card {
     padding: 9px 12px;
+}
+
+.dashboard-page .device-grid {
+    min-height: 0;
+    overflow-y: auto;
+    align-content: start;
+    padding-right: 4px;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar {
+    width: 7px;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-clip: padding-box;
+    background-color: #cbd5e1;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.dashboard-page .device-grid::-webkit-scrollbar-button:single-button,
+.dashboard-page .device-grid::-webkit-scrollbar-button:vertical:decrement,
+.dashboard-page .device-grid::-webkit-scrollbar-button:vertical:increment,
+.dashboard-page .device-grid::-webkit-scrollbar-button:horizontal:decrement,
+.dashboard-page .device-grid::-webkit-scrollbar-button:horizontal:increment,
+.dashboard-page .device-grid::-webkit-scrollbar-button:vertical:start:decrement,
+.dashboard-page .device-grid::-webkit-scrollbar-button:vertical:end:increment,
+.dashboard-page .device-grid::-webkit-scrollbar-button:horizontal:start:decrement,
+.dashboard-page .device-grid::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .dashboard-page .device-bottom {

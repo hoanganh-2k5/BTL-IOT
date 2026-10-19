@@ -59,6 +59,7 @@ router.get("/", async (req, res) => {
                 `SELECT
                     a.id,
                     a.request_id AS "requestId",
+                    u.username AS "username",
                     d.device_code AS "deviceId",
                     d.name AS "deviceName",
                     a.action,
@@ -67,6 +68,7 @@ router.get("/", async (req, res) => {
                     a.responded_at AS "respondedAt",
                     a.response_time_ms AS "latencyMs"
                 FROM actions a
+                JOIN users u ON u.id = a.user_id
                 JOIN devices d ON d.id = a.devices_id
                 ${whereSql}
                 ORDER BY a.requested_at DESC, a.id DESC

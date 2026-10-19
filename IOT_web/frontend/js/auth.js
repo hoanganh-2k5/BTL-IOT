@@ -4,11 +4,25 @@ let ok = true;
 
 async function checkAuth() {
     try {
-        await window.api.getCurrentUser();
+        const result = await window.api.getCurrentUser();
+        updateSidebarUser(result.data?.user);
     } catch (error) {
         console.log(error)
         window.location.href = "/";
     }
+}
+
+function updateSidebarUser(user) {
+    const displayName = user?.username || user?.fullname || "User";
+    const avatarText = displayName.trim().charAt(0).toUpperCase() || "U";
+
+    document.querySelectorAll(".sidebar-user-name").forEach(element => {
+        element.textContent = displayName;
+    });
+
+    document.querySelectorAll(".sidebar-user-avatar").forEach(element => {
+        element.textContent = avatarText;
+    });
 }
 
 if (

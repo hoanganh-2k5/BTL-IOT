@@ -78,9 +78,7 @@ function renderSensorData(items) {
 
     items.forEach(item => {
         const row = document.createElement("tr");
-        const displayValue = item.type === "LIGHT"
-            ? Math.round(Number(item.value) / 1024 * 100)
-            : item.value;
+        const displayValue = item.value;
 
         appendCell(row, `#${String(item.id).padStart(4, "0")}`);
         appendCell(row, item.sensorId || "--");

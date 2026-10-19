@@ -43,12 +43,8 @@ function updateSensor(sensor, valueId, timeId, barId, max) {
     }
 
     const value = Number(sensor.value);
-    if (max === 1024){
-        valueElement.textContent = Math.round(value /1024 * 100);
-    }
-    else{
-        valueElement.textContent = value;
-    }
+
+    valueElement.textContent = value;
     timeElement.textContent = new Date(sensor.recordedAt).toLocaleTimeString("vi-VN");
     barElement.style.width = `${Math.min(100, Math.max(0, value / max * 100))}%`;   
 }
@@ -251,7 +247,7 @@ function updateSensorChart(items) {
 
     function valuesFor(type) {
         const values = new Map(
-            items.filter(item => item.type === type).map(item => [item.recordedAt, Number(item.type != "LIGHT" ? item.value : Math.round(item.value / 1024 * 100))])
+            items.filter(item => item.type === type).map(item => [item.recordedAt, Number(item.value)])
         );
 
         return timestamps.map(time =>
@@ -282,6 +278,7 @@ function updateSensorChart(items) {
             label: "Ánh sáng",
             sensorType: "light",
             data: valuesFor("LIGHT"),
+            yAxisID: "y1",
             borderColor: "#f59e0b",
             backgroundColor: "#f59e0b",
             tension: 0.3,
@@ -308,7 +305,22 @@ function updateSensorChart(items) {
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: "Nhiệt độ (°C), Độ ẩm (%)"
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: "right",
+                        title: {
+                            display: true,
+                            text: "Ánh sáng (lux)"
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
                     }
                 }
             }
