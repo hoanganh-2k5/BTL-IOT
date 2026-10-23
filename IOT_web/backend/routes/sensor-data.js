@@ -1,7 +1,9 @@
 const express = require("express");
 const {query} = require("../db");
+const { requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
+router.use(requireAuth);
 
 router.get("/", async (req, res) => {
     const page = Math.max(1, Math.floor(Number(req.query.page) || 1));
@@ -19,10 +21,7 @@ router.get("/", async (req, res) => {
         const typePosition = params.length;
         params.push(`%${searchQuery}%`);
         const queryPosition = params.length;
-        const valueExpression = `CASE
-            WHEN s.type = 'LIGHT' THEN ROUND(d.value / 1024.0 * 100)::TEXT
-            ELSE d.value::TEXT
-        END`;
+        const valueExpression = `d.value::TEXT`;
         conditions.push(`
             s.type = $${typePosition}
             AND ${valueExpression} ILIKE $${queryPosition}

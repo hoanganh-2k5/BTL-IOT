@@ -196,6 +196,12 @@ pageSizeSelect.addEventListener("change", () => {
 });
 
 searchButton.addEventListener("click", () => applyFilters(true));
+searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        applyFilters(true);
+    }
+});
 
 resetButton.addEventListener("click", () => {
     searchInput.value = "";

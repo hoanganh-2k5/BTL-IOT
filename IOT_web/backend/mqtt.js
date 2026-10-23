@@ -132,7 +132,7 @@ async function saveTelemetry(topic, payload) {
                 code: `${nodeCode}:light`,
                 name: "Ánh sáng",
                 type: "LIGHT",
-                unit: "raw",
+                unit: "lux",
                 value: payload.light
             }
         ];
@@ -177,6 +177,13 @@ async function saveTelemetry(topic, payload) {
                 sensorId = sensorResult.rows[0].id;
             } else {
                 sensorId = sensorResult.rows[0].id;
+
+                await db.query(
+                    `UPDATE sensors
+                     SET unit = $2
+                     WHERE id = $1`,
+                    [sensorId, sensor.unit]
+                );
             }
 
             await db.query(

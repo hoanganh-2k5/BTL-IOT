@@ -2,8 +2,10 @@ const express = require("express");
 const crypto = require("node:crypto");
 const { query } = require("../db");
 const { publishDeviceCommand } = require("../mqtt");
+const { requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
+router.use(requireAuth);
 
 async function markActionFailed(requestId) {
     if (!requestId) return;
@@ -86,6 +88,7 @@ router.post("/:id/actions", async (req, res) => {
         }
 
         const device = deviceResult.rows[0];
+
         const separator = device.device_code.indexOf(":");
 
         if (separator === -1) {

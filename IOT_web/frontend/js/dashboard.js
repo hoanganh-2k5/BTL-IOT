@@ -70,12 +70,13 @@ function renderDevices(devices) {
 
         return `
             <article
-                class="device-card"
+                class="led-card"
                 data-device-id="${device.deviceCode}"
                 data-current-state="${state}"
                 data-status="${online ? "online" : "offline"}">
 
-                <div class="device-card-top">
+                <div class="led-card-info">
+                    <span class="led-icon ${state === "ON" ? "led-on" : ""}">●</span>
                     <div>
                         <h3>${device.name}</h3>
                         <p>${device.deviceCode}</p>
@@ -88,7 +89,7 @@ function renderDevices(devices) {
                     </span>
                 </div>
 
-                <div class="device-bottom">
+                <div class="led-card-control">
                     <div>
                         <span>Trạng thái</span>
                         <strong class="${isPending ? "pending-state" : ""}">
@@ -139,8 +140,8 @@ deviceGrid.addEventListener("click", async event => {
 
     if (!button) return;
 
-    const card = button.closest(".device-card");
-    const stateElement = card.querySelector(".device-bottom strong");
+    const card = button.closest(".led-card");
+    const stateElement = card.querySelector(".led-card-control strong");
     const deviceId = card.dataset.deviceId;
     const currentState = card.dataset.currentState;
     const action = currentState === "ON" ? "OFF" : "ON";
@@ -167,11 +168,6 @@ deviceGrid.addEventListener("click", async event => {
 // xử lý trạng thái của các thiết bị
 function updateNodeStatus(data) {
     const node = data.node;
-    const nodeName = document.getElementById("nodeName");
-    const nodeStatus = document.getElementById("nodeStatus");
-    const lastSeen = document.getElementById("lastSeen");
-    const sensorCount = document.getElementById("sensorCount");
-    const deviceCount = document.getElementById("deviceCount");
     const systemText = document.getElementById("systemStatusText");
     const systemDescription = document.getElementById("systemStatusDescription");
     const systemUpdatedAt = document.getElementById("systemUpdatedAt");
@@ -193,18 +189,7 @@ function updateNodeStatus(data) {
         );
     };
 
-    const dht11Active = online && isFresh(data.temperature) && isFresh(data.humidity);
-    const lightSensorActive = online && isFresh(data.light);
-    const activeSensorCount = Number(dht11Active) + Number(lightSensorActive);
-
-    sensorCount.textContent = `${activeSensorCount}/2`;
-    deviceCount.textContent = String((data.devices || []).length);
-
     if (!node) {
-        nodeName.textContent = "--";
-        nodeStatus.textContent = "OFFLINE";
-        nodeStatus.className = "badge badge-offline";
-        lastSeen.textContent = "--";
         systemUpdatedAt.textContent = "--";
         systemText.textContent = "Chưa nhận được telemetry";
         systemDescription.textContent = "Đang chờ ESP8266 kết nối.";
@@ -213,10 +198,6 @@ function updateNodeStatus(data) {
 
     const lastSeenText = node.lastSeen ? new Date(node.lastSeen).toLocaleString("vi-VN") : "--";
 
-    nodeName.textContent = node.name;
-    nodeStatus.textContent = online ? "ONLINE" : "OFFLINE";
-    nodeStatus.className = `badge ${online ? "badge-online" : "badge-offline"}`;
-    lastSeen.textContent = lastSeenText;
     systemUpdatedAt.textContent = lastSeenText;
     systemText.textContent = online ? "Hệ thống hoạt động bình thường" : "ESP8266 đang offline";
     systemDescription.textContent = online ? `Đã nhận telemetry từ ${node.deviceCode}.` : `Không thể kết nối tới ${node.deviceCode}.`;

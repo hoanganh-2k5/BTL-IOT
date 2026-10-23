@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { query } = require("../db");
+const { requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -57,6 +58,8 @@ router.post("/login", async (req, res) => {
         });
     }
 });
+
+router.use(requireAuth);
 
 router.post("/logout", (req, res) => {
     req.session.destroy((err) => {

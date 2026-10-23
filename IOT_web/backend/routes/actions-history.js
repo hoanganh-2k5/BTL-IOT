@@ -1,7 +1,9 @@
 const express = require("express");
 const { query } = require("../db");
+const { requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
+router.use(requireAuth);
 
 router.get("/", async (req, res) => {
     const page = Math.max(1, Math.floor(Number(req.query.page) || 1));

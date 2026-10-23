@@ -44,6 +44,7 @@
 
     width: 38px;
     height: 38px;
+    font-size: 25px;
 
     border-radius: 12px;
     background-color: var(--color-primary);
@@ -363,6 +364,10 @@
     padding: 18px;
 }
 
+.led-panel {
+    padding: 18px;
+}
+
 .panel-header {
     display: flex;
     justify-content: space-between;
@@ -492,6 +497,71 @@ select {
 .node-item p {
     margin: 4px 0 0;
     font-size: 13px;
+}
+
+.led-list {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+}
+
+.led-card {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    background: var(--color-node-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.led-card-info,
+.led-card-control {
+    display: flex;
+    align-items: center;
+}
+
+.led-card-info {
+    gap: 10px;
+}
+
+.led-card-info h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.led-card-info p {
+    margin: 4px 0 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.led-card-control {
+    gap: 10px;
+}
+
+.led-card-control > div {
+    display: grid;
+    gap: 2px;
+    text-align: right;
+}
+
+.led-card-control strong {
+    font-size: 13px;
+}
+
+.led-card-control strong.pending-state {
+    color: #f59e0b;
+}
+
+.led-icon {
+    color: #cbd5e1;
+    font-size: 23px;
+}
+
+.led-icon.led-on {
+    color: var(--color-light);
+    text-shadow: 0 0 9px var(--color-light);
 }
 
 
@@ -724,7 +794,7 @@ select {
     min-height: 0;
     padding: 12px 20px;
     gap: 10px;
-    grid-template-rows: auto minmax(0, 1fr) 150px auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
 .dashboard-page .sensor-summary,
@@ -755,7 +825,7 @@ select {
 
 .dashboard-page .overview-grid,
 .dashboard-page .sensor-chart-card,
-.dashboard-page .node-panel {
+.dashboard-page .led-panel {
     min-height: 0;
 }
 
@@ -765,8 +835,9 @@ select {
     grid-template-rows: auto auto minmax(0, 1fr) auto;
 }
 
-.dashboard-page .node-panel {
+.dashboard-page .led-panel {
     padding: 12px 14px;
+    overflow-y: auto;
 }
 
 .dashboard-page .chart-legend {
@@ -786,6 +857,27 @@ select {
 .dashboard-page .node-list {
     margin-top: 8px;
     gap: 6px;
+}
+
+.dashboard-page .led-list {
+    margin-top: 8px;
+    gap: 6px;
+}
+
+.dashboard-page .led-card {
+    padding: 8px 10px;
+}
+
+.dashboard-page .led-card-info h3 {
+    font-size: 13px;
+}
+
+.dashboard-page .led-card-info p {
+    font-size: 11px;
+}
+
+.dashboard-page .device-section {
+    display: none;
 }
 
 .dashboard-page .node-item {

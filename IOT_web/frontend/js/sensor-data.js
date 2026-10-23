@@ -84,7 +84,7 @@ function renderSensorData(items) {
         appendCell(row, item.sensorId || "--");
         appendCell(row, item.sensorName || item.type || "--");
         appendCell(row, displayValue ?? "--", "value-cell");
-        appendCell(row, item.unit === "raw" ? "%" : item.unit || "--");
+        appendCell(row, item.unit || "--");
         appendCell(row, formatDateTime(item.recordedAt));
         tableBody.appendChild(row);
     });
@@ -166,6 +166,12 @@ function applySensorSearch() {
 searchType.addEventListener("change", updateSearchPlaceholder);
 
 searchButton.addEventListener("click", applySensorSearch);
+searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        applySensorSearch();
+    }
+});
 
 resetButton.addEventListener("click", () => {
     searchInput.value = "";
